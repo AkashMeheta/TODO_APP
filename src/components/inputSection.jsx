@@ -21,7 +21,7 @@ export function InputSection({ handleInput }) {
 
   return (
     <>
-      <div className="row">
+      <div className={`row ${styles.inputParentDiv}`}>
         <div className={`col-sm-4 ${styles.inputDiv}`}>
           <input
             type="text"

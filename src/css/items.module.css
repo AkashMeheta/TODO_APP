@@ -17,6 +17,10 @@
 }
 
 .working {
-    background-color: black;
-    font-size: 100px;
+    background-color: lightsalmon;
+    color: white;
+}
+
+.itemsDiv{
+    margin: 10px;
 }

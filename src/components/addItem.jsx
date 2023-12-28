@@ -7,8 +7,6 @@ function AddItem({ item, handelDoneButton }) {
   const handelCompleteButton = (task) => {
     const activeItem = [...active, task];
     setActive(activeItem);
-    console.log(`${task} is completing`);
-    console.log(active);
   }
 
   return (
@@ -18,7 +16,7 @@ function AddItem({ item, handelDoneButton }) {
         key={items.task} 
         task={items.task} 
         time={items.time}
-        completing={true}
+        completing={active.includes(items.task)}
         handelDoneButton = {handelDoneButton}
         handelCompleteButton = {()=>handelCompleteButton(items.task)}
         ></Item>
