@@ -1,0 +1,14 @@
+.inputSection {
+    padding: 0px 5px;
+    font-size: 1.5vw;
+}
+
+.inputDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonField {
+    font-size: 20px;
+}

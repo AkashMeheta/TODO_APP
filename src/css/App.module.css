@@ -1,0 +1,12 @@
+.container{
+    max-width: 80%;
+    background-color: beige; 
+    margin: auto;
+}
+
+.welcome{
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 10px 0px;
+    color: coral;
+}

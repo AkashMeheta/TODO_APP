@@ -1,0 +1,22 @@
+.taskName{
+    padding: 20px 0px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.actions{
+    padding: 20px 0px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttonField{
+    font-size: 20px;
+}
+
+.working {
+    background-color: black;
+    font-size: 100px;
+}
