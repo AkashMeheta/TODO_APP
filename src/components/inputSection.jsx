@@ -1,56 +1,55 @@
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import styles from "../css/inputSection.module.css";
+import { ItemContext } from "../store/itemContext";
 
-export function InputSection({ handleInput }) {
-  const [taskName, setTaskName] = useState("");
-  const [taskDate, setTaskDate] = useState("");
+export function InputSection() {
 
-  const handelTaskName = (event) => {
-    setTaskName(event.target.value);
-  };
+  const itemContext = useContext(ItemContext);
+  const inputHandeling = itemContext.handleInput;
 
-  const handelTaskDate = (event) => {
-    setTaskDate(event.target.value);
-  };
+  const taskNameRef = useRef();
+  const taskDateRef = useRef();
 
-  const handelSubmitButton = () => {
-    handleInput(taskName, taskDate);
-    setTaskDate("");
-    setTaskName("");
+
+  const handelSubmitButton = (event) => {
+    const taskName = taskNameRef.current.value;
+    const taskDate = taskDateRef.current.value;
+    inputHandeling(taskName, taskDate);
+    event.preventDefault();
   };
 
   return (
     <>
-      <div className={`row ${styles.inputParentDiv}`}>
+      <form className={`row ${styles.inputParentDiv}`} onSubmit={handelSubmitButton}>
         <div className={`col-sm-4 ${styles.inputDiv}`}>
           <input
             type="text"
             className={styles.inputSection}
+            ref={taskNameRef}
             id="taskName"
             placeholder="Enter Your Task"
-            value={taskName}
-            onChange={handelTaskName}
+            
           />
         </div>
         <div className={`col-sm-4 ${styles.inputDiv}`}>
           <input
             type="time"
             className={styles.inputSection}
+            ref={taskDateRef}
             id="taskTime"
             placeholder="Enter Straing Time"
-            value={taskDate}
-            onChange={handelTaskDate}
+            
           />
         </div>
         <div className="col-sm-4">
           <button
-            className={`${styles.buttonField} btn btn-success`}
-            onClick={handelSubmitButton}
+            className={`${styles.buttonField} btn btn-primary`}
+            
           >
             ADD TASK
           </button>
         </div>
-      </div>
+      </form>
     </>
   );
 }

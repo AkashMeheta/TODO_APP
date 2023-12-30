@@ -14,10 +14,16 @@
 
 .buttonField{
     font-size: 20px;
+    color: black;
 }
 
 .working {
-    background-color: lightsalmon;
+    background-color: rgb(15, 255, 80);
+    color: black;
+}
+
+.pause {
+    background-color:#DC143C;
     color: white;
 }
 
