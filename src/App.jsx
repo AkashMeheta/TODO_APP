@@ -22,7 +22,6 @@ function App() {
 
     let newArr = [...item, tempObj];
     setItem(newArr);
-
     };
 
   const handelDoneButton = (task) => {
