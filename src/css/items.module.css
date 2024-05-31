@@ -17,13 +17,16 @@
     color: black;
 }
 
-.working {
+.done {
     background-color: rgb(15, 255, 80);
     color: black;
 }
-
+.working {
+    background-color: rgb(243, 255, 15);
+    color: black;
+}
 .pause {
-    background-color:#DC143C;
+    background-color:green;
     color: white;
 }
 

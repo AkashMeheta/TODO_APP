@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef  } from "react";
 import styles from "../css/inputSection.module.css";
 import { ItemContext } from "../store/itemContext";
 
@@ -9,13 +9,18 @@ export function InputSection() {
 
   const taskNameRef = useRef();
   const taskDateRef = useRef();
+  
 
 
   const handelSubmitButton = (event) => {
     const taskName = taskNameRef.current.value;
     const taskDate = taskDateRef.current.value;
-    inputHandeling(taskName, taskDate);
+    const key = `${taskName}--${taskDate}`;
+    const taskId = key;
+    inputHandeling(taskName, taskDate, taskId);
     event.preventDefault();
+    taskNameRef.current.value="";
+    taskDateRef.current.value="";
   };
 
   return (

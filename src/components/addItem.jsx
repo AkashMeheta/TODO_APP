@@ -4,36 +4,38 @@ import Item from "./items";
 import { ItemContext } from "../store/itemContext";
 
 function AddItem() {
-
+  
   const itemContextStore = useContext(ItemContext);
   const item = itemContextStore.item;
-  const handelDoneButton1 = itemContextStore.handelDoneButton;
+  const handelDeleteButton1 = itemContextStore.handelDeleteButton;
 
   const [ active, setActive ] = useState([]);
   const [ pauseTask, setPauseTask ] = useState([]);
 
-  const handelCompleteButton = (task) => {
-    const activeItem = [...active, task];
-    setActive(activeItem);
+  const handelCompleteButton = (items) => {
+    setActive([...active, items.id]);
   }
   
-  const handelPauseButton = (task) => {
-    const pauseItem = [...pauseTask, task ];
-    setPauseTask(pauseItem); 
+  const handelDoneButton = (items) => {
+    const btn = document.getElementById(`${items.task}--${items.time}`)
+    if(btn){
+      btn.remove();
+    }
+    setPauseTask([...pauseTask, items.id ]);
   }
-
+  
   return (
     <>
       {item.map((items) => (
         <Item 
-        key={items.task} 
+        key={items.id} 
         task={items.task} 
         time={items.time}
-        completing={active.includes(items.task)}
-        pause={pauseTask.includes(items.task)}
-        handelDoneButton = {handelDoneButton1}
-        handelPauseButton = {() => handelPauseButton(items.task)}
-        handelCompleteButton = {()=>handelCompleteButton(items.task)}
+        completing={active.includes(items.id)}
+        pause={pauseTask.includes(items.id)}
+        handelDeleteButton = {handelDeleteButton1}
+        handelDoneButton = {() => handelDoneButton(items)}
+        handelCompleteButton = {()=>handelCompleteButton(items)}
         ></Item>
       ))}
     </>
