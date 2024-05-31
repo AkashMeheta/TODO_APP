@@ -1,6 +1,7 @@
 import { InputSection } from "./components/inputSection";
 import ItemCard from "./components/container";
 import AddItem from "./components/addItem";
+import SortComponent from "./components/SortComponent";
 import { ItemContext } from "./store/itemContext";
 import Heading from "./components/heading";
 import { EnjoyMsg } from "./components/enojyMsg";
@@ -14,11 +15,12 @@ function App() {
 
   const [ item, setItem ] = useState([]);
   
-  const handleInput = (taskName, taskTime, taskId) => {
+  const handleInput = (taskName, taskTime, taskPriorty, taskId) => {
     let tempObj = {
       id: taskId,
       task: taskName,
       time: taskTime,
+      priorty: taskPriorty
     }
 
     let newArr = [...item, tempObj];
@@ -33,11 +35,12 @@ function App() {
 
   return (
     <>
-      <ItemContext.Provider value={{ item, handelDeleteButton, handleInput}}>
+      <ItemContext.Provider value={{ item, handelDeleteButton, handleInput, setItem}}>
         <center className={styles.container}>
           <ItemCard>
             <Heading></Heading>
             <InputSection/>
+            <SortComponent/>
             <EnjoyMsg></EnjoyMsg>
             <AddItem></AddItem>
           </ItemCard>

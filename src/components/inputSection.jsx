@@ -9,18 +9,21 @@ export function InputSection() {
 
   const taskNameRef = useRef();
   const taskDateRef = useRef();
+  const taskPriortyRef = useRef();
   
 
 
   const handelSubmitButton = (event) => {
     const taskName = taskNameRef.current.value;
     const taskDate = taskDateRef.current.value;
+    const taskPriorty = taskPriortyRef.current.value;
     const key = `${taskName}--${taskDate}`;
     const taskId = key;
-    inputHandeling(taskName, taskDate, taskId);
+    inputHandeling(taskName, taskDate,taskPriorty, taskId);
     event.preventDefault();
     taskNameRef.current.value="";
     taskDateRef.current.value="";
+    taskPriortyRef.current.value="";
   };
 
   return (
@@ -46,7 +49,17 @@ export function InputSection() {
             
           />
         </div>
-        <div className="col-sm-4">
+        <div className={`col-sm-2 ${styles.inputDiv}`}>
+          <input
+            type="text"
+            className={styles.inputSection}
+            ref={taskPriortyRef}
+            id="taskPriorty"
+            placeholder="Enter Task Priorty"
+            
+          />
+        </div>
+        <div className="col-sm-2">
           <button
             className={`${styles.buttonField} btn btn-primary`}
             
